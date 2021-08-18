@@ -14,7 +14,7 @@ class MainViewModel : ViewModel() {
     val result: LiveData<Double>
         get() = _result
 
-    fun getCurrency(from: Currency, amount: Double) {
-        _result.postValue(repository.getConvertedData(from, amount))
+    fun getCurrency(from: Currency, amount: String) {
+        _result.postValue(repository.getConvertedData(from, amount.toDouble()))
     }
 }

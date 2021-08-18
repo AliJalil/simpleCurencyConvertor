@@ -4,10 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.example.myapplication.viewModel.MainViewModel" />
+
         <variable
             name="currency"
             type="com.example.myapplication.model.domain.Currency" />
@@ -32,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="From IQD"
-                
+
                 />
 
             <RadioButton
@@ -60,20 +63,21 @@
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
             android:gravity="center"
+            android:text="@{viewModel.result.toString()}"
             android:textAlignment="center"
             android:textSize="34sp"
-            android:text="@{viewModel.result.toString()}"
             app:layout_constraintEnd_toEndOf="@+id/amountEditTxt"
             app:layout_constraintStart_toStartOf="@+id/amountEditTxt"
-            app:layout_constraintTop_toBottomOf="@+id/amountEditTxt" />
+            app:layout_constraintTop_toBottomOf="@+id/amountEditTxt"
+            app:myToast="@{viewModel.result.toString()}" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Calculate"
             android:onClick="@{() -> viewModel.getCurrency(iqdRadio.checked?currency.IQD :currency.USD ,amountEditTxt.getText().toString())}"
+            android:text="Calculate"
             app:layout_constraintEnd_toEndOf="@+id/result"
             app:layout_constraintStart_toStartOf="@+id/result"
             app:layout_constraintTop_toBottomOf="@+id/result" />
